@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	margin:0;
+	padding:0;
+	width:100%;
+	max-width:100%;
+	min-height:100%;
+	overflow-x:hidden;  /* se propaga al viewport */
+	overflow-y:scroll;  /* siempre una sola scrollbar */
+}
+
+body{
+	margin:0;
+	padding:0;
+	width:100%;
+	min-height:100dvh;
+	background:#f7f7f7;
+	color:#0f172a;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	/* NO overflow aquí — lo hereda de html */
+}
+
+a, button {
+	transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease, opacity 180ms ease;
+}
+
+button:active,
+a:active {
+	transform: translateY(0.5px) scale(0.995);
+}
+
+.page-transition {
+	animation: pageIn 260ms ease;
+}
+
+@keyframes pageIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 1ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 1ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+
+@keyframes toastIn { from { transform: translateY(-6px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes toastBar { from { transform: scaleX(1); } to { transform: scaleX(0); } }
